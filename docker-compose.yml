@@ -1,0 +1,27 @@
+version: '3.1'
+services:
+  service1:
+    image: postgres
+    volumes:
+      - ./service1/:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: pswd
+    ports:
+      - 127.0.0.1:5432:5432
+  
+  service2:
+    build: ./service2
+    depends_on:
+      - "service1"
+    volumes:
+        - ./data/:/data
+    environment:
+      PGPASSWORD: pswd
+    command: ["./wait-for-it.sh", "service1:5432", "--", "psql", "-U", "postgres", "-h", "service1", "-f", "/init.sql"]
+
+  service3:
+    build: ./service3
+    depends_on:
+      - "service1"
+    ports:
+      - 127.0.0.1:5000:5000

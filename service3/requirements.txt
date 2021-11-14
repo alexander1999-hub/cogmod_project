@@ -1,0 +1,16 @@
+lmdb==1.0.0
+matplotlib==3.2.1
+numpy==1.19.5
+opencv-python==4.4.0.46
+path==15.0.0
+Click>=7.0
+Flask>=1.1.1
+itsdangerous>=1.1.0
+Jinja2>=2.10.3
+MarkupSafe>=1.1.1
+Pillow>=6.2.1
+redis>=3.3.11
+six>=1.12.0
+Werkzeug
+editdistance
+tensorflow==2.4.0
